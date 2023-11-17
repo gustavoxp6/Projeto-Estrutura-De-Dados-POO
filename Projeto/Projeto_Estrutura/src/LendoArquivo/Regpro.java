@@ -12,6 +12,7 @@ public class Regpro {
         this.descricao = descricao;
         this.preco = preco;
         this.qtd = qtd;
+        this.total= total;
     }
     public int getCodigo() {
         return codigo;
