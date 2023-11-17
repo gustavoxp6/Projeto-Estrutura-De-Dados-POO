@@ -6,11 +6,11 @@ import java.util.Scanner;
 import LendoArquivo.Regpro;
 public class LeituraArq3 {
     public static void main(String[] args) {
-        //Criando o Arrey para armazenar os dados
+        //Criando o Array para armazenar os dados
         ArrayList<Regpro> listaDeProdutos = new ArrayList<>();
         
         // Especifique o caminho para o arquivo de texto
-        String caminhoArquivo = "C:\\Users\\Admin\\Documents\\temp\\produto.txt";
+        String caminhoArquivo = "C:\\Users\\01607962\\Downloads\\Projeto-Estrutura-De-Dados-main\\Projeto\\produto.txt";
         int codigo=0;
         String nome="";
         String valors;
@@ -38,8 +38,8 @@ public class LeituraArq3 {
                 Produto.setPreco(valor = valor /100);
                 Produto.setQtd(qtd=Integer.parseInt(linha.substring(43,45)));
                 categoria=Integer.parseInt(linha.substring(46,47));
-                Produto.setTotal(total = total+(valor*qtd));
-                //abaixo adiciono os dados no Arrey 
+                Produto.setTotal(total =+valor*qtd);
+                //abaixo adiciono os dados no Array 
                 listaDeProdutos.add(new Regpro(Produto.getCodigo(), Produto.getDescricao(),Produto.getPreco(), Produto.getQtd(),Produto.getTotal()));
                 total = 0;
                 //System.out.println(codigo + " - "+ nome + " - "+ valor);
