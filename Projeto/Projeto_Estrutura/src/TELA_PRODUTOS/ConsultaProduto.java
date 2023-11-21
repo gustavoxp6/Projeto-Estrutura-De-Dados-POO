@@ -12,6 +12,8 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -163,7 +165,7 @@ public class ConsultaProduto extends JFrame {
 		viewport.setBackground(new Color(255,255,255)); // define a cor de fundo do ScrollPane
 		contentPane.add(scrollPaneCliente);
         ArrayList<Regpro> listaDeProdutos = new ArrayList<>();
-        String caminhoArquivo = "C:\\Users\\Admin\\Documents\\temp\\produto.txt";
+        String caminhoArquivo = "C:\\Users\\01607962\\Downloads\\Projeto-Estrutura-De-Dados-main\\produto.txt";
         int codigo =0;
         String nome="";
         String valors;
@@ -232,6 +234,26 @@ public class ConsultaProduto extends JFrame {
 					}
 				}
 			}
+			else if(cat.equals("") && !nom.equals("Selecione") && val.equals("") && cod.equals("")){
+					for(Regpro prod:listaDeProdutos){
+						if(prod.getDescricao().trim().equals(nom)){
+						System.out.println(1);
+					model.addRow(new Object[]{prod.getCodigo(), prod.getDescricao(), prod.getPreco(), prod.getQtd(), prod.getCategoria(),prod.getTotal()});
+				}
+			}
+			}else if(!cat.equals("") && nom.equals("Selecione") && !val.equals("") && cod.equals("")){
+				for(Regpro prod:listaDeProdutos){
+					
+					if(prod.getCategoria()==Integer.parseInt(cat) && prod.getPreco()>Double.parseDouble(val)){
+					model.addRow(new Object[]{prod.getCodigo(), prod.getDescricao(), prod.getPreco(), prod.getQtd(), prod.getCategoria(),prod.getTotal()});
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "Produto não encontrado");
+					break;
+				}
+			}
+		}
+			
             leitor.close();
 			}catch (FileNotFoundException re) {
                 System.out.println("Arquivo não encontrado: " + caminhoArquivo);
