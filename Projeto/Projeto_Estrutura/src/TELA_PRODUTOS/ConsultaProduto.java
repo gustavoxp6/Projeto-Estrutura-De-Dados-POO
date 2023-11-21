@@ -77,62 +77,26 @@ public class ConsultaProduto extends JFrame {
 		lblNewLabel.setBounds(274, 11, 226, 25);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Cod");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_1.setBounds(80, 78, 38, 14);
-		contentPane.add(lblNewLabel_1);
+	
 		
-		JTextField tf_cod = new JTextField();
-		tf_cod.setBounds(142, 77, 67, 20);
-		contentPane.add(tf_cod);
-		tf_cod.setColumns(10);
-		
-		JLabel lblNewLabel_2 = new JLabel("Descrição");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_2.setBounds(225, 78, 79, 19);
-		contentPane.add(lblNewLabel_2);
-		
-		JComboBox comboBox = new JComboBox();
-        comboBox.setModel(new DefaultComboBoxModel(new String[] {
-            "Selecione", "Chai", "Chang", "Aniseed Syrup", "Chef Anton's Cajun Seasoning",
-            "Chef Anton's Gumbo Mix", "Grandma's Boysenberry Spread", "Uncle Bob's Organic Dried Pears",
-            "Northwoods Cranberry Sauce", "Mishi Kobe Niku", "Ikura", "Queso Cabrales", "Queso Manchego La Pastora",
-            "Konbu", "Tofu", "Genen Shouyu", "Pavlova", "Alice Mutton", "Carnarvon Tigers",
-            "Teatime Chocolate Biscuits", "Sir Rodney's Marmalade", "Sir Rodney's Scones", "Gustaf's Knáckebrád",
-            "Tunnbrád", "Guaraná Fantástica", "NuNuCa Nuá-Nougat-Creme", "Gumbár Gummibárchen",
-            "Schoggi Schokolade", "Rássle Sauerkraut", "Tháringer Rostbratwurst", "Nord-Ost Matjeshering",
-            "Gorgonzola Telino", "Mascarpone Fabioli", "Geitost", "Sasquatch Ale", "Steeleye Stout",
-            "Inlagd Sill", "Gravad lax", "Cáte de Blaye", "Chartreuse verte", "Boston Crab Meat",
-            "Jack's New England Clam Chowder", "Singaporean Hokkien Fried Mee", "Ipoh Coffee", "Gula Malacca",
-            "Rágede sild", "Spegesild", "Zaanse koeken", "Chocolade", "Maxilaku", "Valkoinen suklaa",
-            "Manjimup Dried Apples", "Filo Mix", "Perth Pasties", "Tourtiáre", "Pátá chinois",
-            "Gnocchi di nonna Alice", "Ravioli Angelo", "Escargots de Bourgogne", "Raclette Courdavault",
-            "Camembert Pierrot", "Sirop d'árable", "Tarte au sucre", "Vegie-spread",
-            "Wimmers gute Semmelknádel", "Louisiana Fiery Hot Pepper Sauc", "Louisiana Hot Spiced Okra",
-            "Laughing Lumberjack Lager", "Scottish Longbreads", "Gudbrandsdalsost", "Outback Lager",
-            "Flátemysost", "Mozzarella di Giovanni", "Rád Kaviar", "Longlife Tofu", "Rhánbráu Klosterbier",
-            "Lakkalikáári", "Original Frankfurter gráne Soáe"
-        }));
-		comboBox.setBounds(314, 76, 133, 22);
-		contentPane.add(comboBox);
 		
 		JLabel lblNewLabel_3 = new JLabel("Preço(Maior que:)");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_3.setBounds(248, 123, 130, 18);
+		lblNewLabel_3.setBounds(200, 78, 130, 19);
 		contentPane.add(lblNewLabel_3);
 		
 		JTextField tf_preco = new JTextField();
-		tf_preco.setBounds(375, 123, 86, 20);
+		tf_preco.setBounds(330, 76, 133, 22);
 		contentPane.add(tf_preco);
 		tf_preco.setColumns(10);
 		
 		JLabel lblNewLabel_4 = new JLabel("Categoria");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_4.setBounds(63, 123, 68, 20);
+		lblNewLabel_4.setBounds(40, 78, 70, 14);
 		contentPane.add(lblNewLabel_4);
 		
 		JTextField tf_categoria = new JTextField();
-		tf_categoria.setBounds(141, 126, 97, 20);
+		tf_categoria.setBounds(120, 77, 67, 20);
 		contentPane.add(tf_categoria);
 		tf_categoria.setColumns(10);
 		
@@ -204,55 +168,40 @@ public class ConsultaProduto extends JFrame {
 				  cont+=1;
                   //System.out.println(codigo + " - "+ nome + " - "+ valor);       
                 }
-				String cod = tf_cod.getText();
-				String nom= (String)comboBox.getSelectedItem();
+				
+				
 				String val= tf_preco.getText();
 				String cat =tf_categoria.getText();
             
-                if (cat.equals("") && nom.equals("Selecione") && val.equals("") && cod.equals("")) {
+                if (cat.equals("") &&  val.equals("") ) {
 					for(Regpro prod:listaDeProdutos){
 						model.addRow(new Object[]{prod.getCodigo(), prod.getDescricao(), prod.getPreco(), prod.getQtd(), prod.getCategoria(),prod.getTotal()});
-					}  		
+					} 
+							
         	}
-			else if (cat.equals("") && nom.equals("Selecione") && val.equals("") && !cod.equals("")) {
-			//model.removeRow(cont);
-            for(Regpro prod:listaDeProdutos){
-				if(prod.getCodigo()==Integer.parseInt(cod)){
-                model.addRow(new Object[]{prod.getCodigo(), prod.getDescricao(), prod.getPreco(), prod.getQtd(), prod.getCategoria(),prod.getTotal()});
-				}
-			}  
-            }else if (!cat.equals("") && nom.equals("Selecione") && val.equals("") && cod.equals("")) {
+			else if (!cat.equals("") &&  val.equals("") ) {
 				for(Regpro prod:listaDeProdutos){
 					if(prod.getCategoria()==Integer.parseInt(cat)){
 					model.addRow(new Object[]{prod.getCodigo(), prod.getDescricao(), prod.getPreco(), prod.getQtd(), prod.getCategoria(),prod.getTotal()});
 					}
 				}
-			}else if(cat.equals("") && nom.equals("Selecione") && !val.equals("") && cod.equals("")){
+				
+			}else if(cat.equals("") &&  !val.equals("") ){
 				for(Regpro prod:listaDeProdutos){
-					if(prod.getPreco()>Double.parseDouble(val)){
+					if(prod.getPreco()>=Double.parseDouble(val)){
 					model.addRow(new Object[]{prod.getCodigo(), prod.getDescricao(), prod.getPreco(), prod.getQtd(), prod.getCategoria(),prod.getTotal()});
 					}
 				}
 			}
-			else if(cat.equals("") && !nom.equals("Selecione") && val.equals("") && cod.equals("")){
-					for(Regpro prod:listaDeProdutos){
-						if(prod.getDescricao().trim().equals(nom)){
-						System.out.println(1);
-					model.addRow(new Object[]{prod.getCodigo(), prod.getDescricao(), prod.getPreco(), prod.getQtd(), prod.getCategoria(),prod.getTotal()});
-				}
-			}
-			}else if(!cat.equals("") && nom.equals("Selecione") && !val.equals("") && cod.equals("")){
+			else if(!cat.equals("") &&  !val.equals("") ){
 				for(Regpro prod:listaDeProdutos){
-					
-					if(prod.getCategoria()==Integer.parseInt(cat) && prod.getPreco()>Double.parseDouble(val)){
+					if(prod.getCategoria()==Integer.parseInt(cat) && prod.getPreco()>=Double.parseDouble(val)){
 					model.addRow(new Object[]{prod.getCodigo(), prod.getDescricao(), prod.getPreco(), prod.getQtd(), prod.getCategoria(),prod.getTotal()});
-				}
-				else{
-					JOptionPane.showMessageDialog(null, "Produto não encontrado");
-					break;
 				}
 			}
 		}
+		tf_categoria.setText("");
+		tf_preco.setText(""); 
 			
             leitor.close();
 			}catch (FileNotFoundException re) {
