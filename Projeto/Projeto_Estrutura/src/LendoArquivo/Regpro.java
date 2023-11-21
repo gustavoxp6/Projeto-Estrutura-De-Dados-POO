@@ -6,13 +6,14 @@ public class Regpro {
     private double preco;
     private int qtd;
     private double total;
-
-    public Regpro(int codigo, String descricao, double preco, int qtd, double total) {
+    private int categoria;
+    public Regpro(int codigo, String descricao, double preco, int qtd, double total, int categoria) {
         this.codigo = codigo;
         this.descricao = descricao;
         this.preco = preco;
         this.qtd = qtd;
         this.total= total;
+        this.categoria = categoria;
     }
     public int getCodigo() {
         return codigo;
@@ -43,5 +44,11 @@ public class Regpro {
     }
     public void setTotal(double total) {
         this.total = total;
+    }
+    public int getCategoria() {
+        return categoria;
+    }
+    public void setCategoria(int categoria) {
+        this.categoria = categoria;
     }
 }
