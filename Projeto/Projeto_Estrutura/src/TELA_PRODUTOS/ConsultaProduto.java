@@ -80,19 +80,19 @@ public class ConsultaProduto extends JFrame {
 	
 		
 		
-		JLabel lblNewLabel_3 = new JLabel("Preço(Maior que:)");
+		JLabel lblNewLabel_3 = new JLabel("Preços até: ");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_3.setBounds(200, 78, 130, 19);
+		lblNewLabel_3.setBounds(220, 78, 130, 19);
 		contentPane.add(lblNewLabel_3);
 		
 		JTextField tf_preco = new JTextField();
-		tf_preco.setBounds(330, 76, 133, 22);
+		tf_preco.setBounds(320, 76, 133, 22);
 		contentPane.add(tf_preco);
 		tf_preco.setColumns(10);
 		
 		JLabel lblNewLabel_4 = new JLabel("Categoria");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_4.setBounds(40, 78, 70, 14);
+		lblNewLabel_4.setBounds(40, 78, 70, 20);
 		contentPane.add(lblNewLabel_4);
 		
 		JTextField tf_categoria = new JTextField();
@@ -188,14 +188,14 @@ public class ConsultaProduto extends JFrame {
 				
 			}else if(cat.equals("") &&  !val.equals("") ){
 				for(Regpro prod:listaDeProdutos){
-					if(prod.getPreco()>=Double.parseDouble(val)){
+					if(prod.getPreco()<Double.parseDouble(val)){
 					model.addRow(new Object[]{prod.getCodigo(), prod.getDescricao(), prod.getPreco(), prod.getQtd(), prod.getCategoria(),prod.getTotal()});
 					}
 				}
 			}
 			else if(!cat.equals("") &&  !val.equals("") ){
 				for(Regpro prod:listaDeProdutos){
-					if(prod.getCategoria()==Integer.parseInt(cat) && prod.getPreco()>=Double.parseDouble(val)){
+					if(prod.getCategoria()==Integer.parseInt(cat) && prod.getPreco()<Double.parseDouble(val)){
 					model.addRow(new Object[]{prod.getCodigo(), prod.getDescricao(), prod.getPreco(), prod.getQtd(), prod.getCategoria(),prod.getTotal()});
 				}
 			}
@@ -210,7 +210,7 @@ public class ConsultaProduto extends JFrame {
     }
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 13));
-		btnNewButton.setBounds(486, 97, 133, 23);
+		btnNewButton.setBounds(486, 78, 133, 23);
 		contentPane.add(btnNewButton);
 		
 		
