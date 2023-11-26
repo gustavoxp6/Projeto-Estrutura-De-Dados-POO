@@ -43,7 +43,7 @@ public class LeituraArqFila {
                 fila.add(new Regpro(codigo ,nome, valor, qtd,categoria,total));
                 total = 0;
                 // condição para chegar até o décimo produto
-                if (cont==10) {
+                if (cont==9) {
                     break;
                 }
             }
