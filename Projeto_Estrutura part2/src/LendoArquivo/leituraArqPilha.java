@@ -30,7 +30,7 @@ public class leituraArqPilha {
             Scanner leitor = new Scanner(arquivo);
             Scanner leia = new Scanner(System.in);
             // Use um loop para ler e imprimir cada linha do arquivo
-            while (leitor.hasNextLine()) {
+            while (leitor.hasNextLine()&&cont<9) {
                 cont +=1;
                 String linha = leitor.nextLine();
                 codigo = Integer.parseInt(linha.substring(0,2));
@@ -46,9 +46,6 @@ public class leituraArqPilha {
                 pilha.add(new Regpro(codigo ,nome, valor, qtd,categoria,total));
                 total = 0;
                 // condição para chegar até o décimo produto
-                if (cont==9) {
-                    break;
-                }
             }
             System.out.println("\u001B[32m-------------------Pilhas-------------------\u001B[0m");
             //Topo da pilha(Ultimo produto)
@@ -58,12 +55,17 @@ public class leituraArqPilha {
             }
             //removendo um elemento, e por ser uma pilha
             //ele removerá o elemento que foi inserido por ultimo
-            pilha.pop();
-            System.out.println("\u001B[32mDepois de remover um elemento:\u001B[0m");
+            cont=0;
+            while (cont<5) {
+                pilha.pop();
+                cont+=1;              
+            }
+            System.out.println("\u001B[32mDepois de remover 5 elementos:\u001B[0m");
             //percorrendo a pilha novamente
             for (int i = 0; i < pilha.size(); i++){
                 System.out.println(pilha.get(i));
             }
+            System.out.println("\u001B[31m    Topo:\n"+ pilha.peek()+"\u001B[0m\n");
             leitor.close();
         } catch (FileNotFoundException e) {
             System.out.println("Arquivo não encontrado: " + caminhoArquivo);

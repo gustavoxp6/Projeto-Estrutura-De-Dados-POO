@@ -27,7 +27,7 @@ public class LeituraArqFila {
             Scanner leitor = new Scanner(arquivo);
             Scanner leia = new Scanner(System.in);
             // Use um loop para ler e imprimir cada linha do arquivo
-            while (leitor.hasNextLine()) {
+            while (leitor.hasNextLine()&&cont<9) {
                 cont +=1;
                 String linha = leitor.nextLine();
                 codigo = Integer.parseInt(linha.substring(0,2));
@@ -42,10 +42,7 @@ public class LeituraArqFila {
                 //inserindo elementos na fila
                 fila.add(new Regpro(codigo ,nome, valor, qtd,categoria,total));
                 total = 0;
-                // condição para chegar até o décimo produto
-                if (cont==9) {
-                    break;
-                }
+                // condição para chegar até o décimo produto 
             }
         System.out.println("\u001B[32m -------------------Filas-------------------\u001B[0m");
         //criando a fila, Queue é apenas uma interface,
@@ -60,12 +57,18 @@ public class LeituraArqFila {
         }
         //removendo um elemento, e por ser uma fila
         //ele removerá o elemento que foi inserido por primeiro
+        cont=0;
+       while(cont<4){
         fila.remove();
-        System.out.println("\u001B[32mDepois de remover um elemento:\u001B[0m ");
+        cont+=1;
+       }
+        System.out.println("\u001B[32mDepois de remover 5 elementos:\u001B[0m ");
         //percorrendo a fila novamente
+        
         for (Object obj : fila) {
-            System.out.println(obj);
+                 System.out.println(obj);
         }
+        System.out.println("\u001B[31m    Topo: \n" + fila.peek()+"\u001B[0m\n");
             leitor.close();
         } catch (FileNotFoundException e) {
             System.out.println("Arquivo não encontrado: " + caminhoArquivo);
